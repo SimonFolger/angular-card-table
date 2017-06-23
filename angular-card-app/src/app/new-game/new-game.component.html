@@ -1,0 +1,11 @@
+<button *ngIf="newGame == false" (click)="newEntry()">Neuer Eintrag</button>
+
+<div *ngIf="newGame == true">
+  <div>
+    <p>Spieltyp wählen:</p>
+    <button *ngFor="let gametype of gameTypes" (click)="selectedGameType = gametype">{{gametype}}</button>
+  </div>
+  <div *ngIf="selectedGameType != undefined">
+    <button *ngFor="let player of players" (click)="setPlayer(player.name)">{{player.name}}</button>
+  </div>
+</div>

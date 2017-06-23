@@ -1,0 +1,50 @@
+<h2>Schafe Köpfen</h2>
+<button (click)="restart()">Neu</button>
+
+<div *ngIf="tableReady == false">
+  <div>
+    <label>Spieler1: </label>
+    <input [(ngModel)]="players[0].name">
+    <label>Moneyz: </label>
+    <input [(ngModel)]="players[0].money">
+  </div>
+  <div>
+    <label>Spieler2: </label>
+    <input [(ngModel)]="players[1].name">
+    <label>Moneyz: </label>
+    <input [(ngModel)]="players[1].money">
+  </div>
+  <div>
+    <label>Spieler3: </label>
+    <input [(ngModel)]="players[2].name">
+    <label>Moneyz: </label>
+    <input [(ngModel)]="players[2].money">
+  </div>
+  <div>
+    <label>Spieler4: </label>
+    <input [(ngModel)]="players[3].name">
+    <label>Moneyz: </label>
+    <input [(ngModel)]="players[3].money">
+  </div>
+  <button (click)="done()">Fertig</button>
+</div>
+
+<div *ngIf="tableReady == true">
+  <table>
+    <tr>
+      <th>{{players[0].name}}</th>
+      <th>{{players[1].name}}</th>
+      <th>{{players[2].name}}</th>
+      <th>{{players[3].name}}</th>
+    </tr>
+    <tr>
+      <td>{{players[0].money}}</td>
+      <td>{{players[1].money}}</td>
+      <td>{{players[2].money}}</td>
+      <td>{{players[3].money}}</td>
+    </tr>
+  </table>
+
+  <app-new-game></app-new-game>
+</div>
+
