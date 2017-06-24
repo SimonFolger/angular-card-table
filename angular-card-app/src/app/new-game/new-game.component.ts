@@ -8,31 +8,30 @@ import { AppComponent } from './../app.component';
 })
 export class NewGameComponent implements OnInit {
 
+  players = this.appComponent.players;
   newGame = false;
   gameTypes = ["Solo", "Sauspiel", "Bettler", "Ramsch"];
-  selectedGameType: string;
+
+  selectedGameType= "";
   playerCount = 0;
-  players = this.appComponent.players;
   selectedPlayer: string[] = [];
-  selectedPlayerMax = 0;
   playerSelected = 0;
   playerWon = 0;
   runnings = 0;
   tailor = 0;
   contra = 0;
+  ramschWinner = "";
+  ramschLooser = "";
 
-  constructor(private appComponent: AppComponent) {
-  }
+  constructor(private appComponent: AppComponent) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   newEntry() {
     this.newGame = true;
   }
 
-  selectGameType(gametype: string) {
+  setGameType(gametype: string) {
     this.selectedGameType = gametype;
     if(gametype == this.gameTypes[1]) {
       this.playerCount = 2;
@@ -52,11 +51,17 @@ export class NewGameComponent implements OnInit {
     }
   }
 
+  setRamschWinner(player: string) {
+    this.ramschWinner = player;
+  }
+
+  setRamschLooser(player: string) {
+    this.ramschLooser = player;
+  }
+
   calc() {
     let amount: number;
-    console.log(this.selectedGameType);
     if(this.selectedGameType == "Solo") {
-      console.log("solo");
       amount = 30;
       if(this.runnings > 2) {
         amount += (this.runnings - 2) * 15;
@@ -70,15 +75,48 @@ export class NewGameComponent implements OnInit {
       if(this.contra == 1) {
         amount += 30;
       }
-      if(this.playerWon = 1) {
-        for(let entry of this.players) {
-          if(entry.name == this.selectedPlayer[0]) {
+      for(let entry of this.players) {
+        if(entry.name == this.selectedPlayer[0]) {
+          if(this.playerWon == 1) {
             entry.money += amount;
           } else {
+            entry.money -= amount;
+          }
+        } else {
+          if(this.playerWon == 1) {
             entry.money -= amount / 3;
+          } else {
+            entry.money += amount / 3;
           }
         }
       }
+      this.resetAll();
     }
+    if(this.selectedGameType == "Ramsch") {
+      amount = 20;
+      for(let entry of this.players) {
+        if(entry.name == this.ramschWinner) {
+          entry.money += amount;
+        }
+        if(entry.name == this.ramschLooser) {
+          entry.money -= amount;
+        }
+      }
+      this.resetAll();
+    }
+  }
+
+  resetAll() {
+    this.newGame = false;
+    this.selectedGameType = "";
+    this.playerCount = 0;
+    this.selectedPlayer = [];
+    this.playerSelected = 0;
+    this.playerWon = 0;
+    this.runnings = 0;
+    this.tailor = 0;
+    this.contra = 0;
+    this.ramschWinner = "";
+    this.ramschLooser = "";
   }
 }

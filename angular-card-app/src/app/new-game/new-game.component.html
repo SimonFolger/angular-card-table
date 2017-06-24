@@ -3,10 +3,10 @@
 <div *ngIf="newGame == true">
   <div>
     <p>Spieltyp wählen:</p>
-    <button *ngFor="let gametype of gameTypes" (click)="selectGameType(gametype)">{{gametype}}</button>
+    <button *ngFor="let gametype of gameTypes" (click)="setGameType(gametype)">{{gametype}}</button>
   </div>
-  <div *ngIf="playerCount != 0">
-    <p>Spieler wählen:</p>
+  <div *ngIf="playerCount != 0 && selectedGameType != 'Ramsch'">
+    <p>Spieler:</p>
     <button *ngFor="let player of players" (click)="setPlayer(player.name)">{{player.name}}</button>
   </div>
   <div *ngIf="playerCount == playerSelected && playerCount != 0">
@@ -15,7 +15,7 @@
     <button (click)="playerWon = 2">Nein</button>
   </div>
   <div *ngIf="playerWon != 0">
-    <p>Laufende?</p>
+    <p>Laufende:</p>
     <button (click)="runnings = 1">Keine</button>
     <button (click)="runnings = 3">3</button>
     <button (click)="runnings = 4">4</button>
@@ -25,15 +25,23 @@
     <button (click)="runnings = 8">8</button>
   </div>
   <div *ngIf="runnings != 0">
-    <p>Schneider?</p>
+    <p>Schneider:</p>
     <button (click)="tailor = 1">Ja</button>
     <button (click)="tailor = 2">Nein</button>
     <button (click)="tailor = 3">Schwarz</button>
   </div>
   <div *ngIf="tailor != 0">
-    <p>Kontra</p>
+    <p>Kontra?</p>
     <button (click)="contra = 1">Ja</button>
     <button (click)="contra = 2">Nein</button>
   </div>
-  <button *ngIf="contra != 0" (click)="calc()">Fertig</button>
+  <div *ngIf="selectedGameType == 'Ramsch'">
+    <p>Gewinner:</p>
+    <button *ngFor="let player of players" (click)="setRamschWinner(player.name)">{{player.name}}</button>
+  </div>
+  <div *ngIf="ramschWinner != ''">
+    <p>Verlierer:</p>
+    <button *ngFor="let player of players" (click)="setRamschLooser(player.name)">{{player.name}}</button>
+  </div>
+  <button *ngIf="contra != 0 || ramschLooser != 0" (click)="calc()">Fertig</button>
 </div>
