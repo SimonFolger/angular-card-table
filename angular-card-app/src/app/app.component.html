@@ -1,5 +1,7 @@
 <app-header></app-header>
-<button (click)="restart()">Neu</button>
+<button (click)="restart()">Manuelle Eingabe</button>
+<button (click)="generateString()">String erzeugen</button>
+<button (click)="readString = true">String eingeben</button>
 
 <div *ngIf="tableReady == false">
   <div>

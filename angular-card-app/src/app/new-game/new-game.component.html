@@ -5,7 +5,7 @@
     <p>Spieltyp wählen:</p>
     <button *ngFor="let gametype of gameTypes" (click)="setGameType(gametype)" [class.active]="gametype === selectedGameType" class="btn-grp">{{gametype}}</button>
   </div>
-  <div *ngIf="playerCount != 0 && selectedGameType != 'Ramsch'">
+  <div *ngIf="playerCount != 0 && selectedGameType != 'Ramsch'" (change)="test()">
     <p>Spieler:</p>
     <button *ngFor="let player of players" (click)="setPlayer(player.name)" [class.active]="player.name === selectedPlayer[0]" class="btn-grp">{{player.name}}</button>
   </div>

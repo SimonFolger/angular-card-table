@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewChecked } from '@angular/core';
 import { AppComponent } from './../app.component';
 
 declare var $: any;
@@ -8,7 +8,7 @@ declare var $: any;
   templateUrl: './new-game.component.html',
   styleUrls: ['./new-game.component.css']
 })
-export class NewGameComponent implements OnInit {
+export class NewGameComponent implements AfterViewChecked {
 
   players = this.appComponent.players;
   newGame = false;
@@ -31,7 +31,14 @@ export class NewGameComponent implements OnInit {
 
   constructor(private appComponent: AppComponent) {}
 
-  ngOnInit() {}
+  ngAfterViewChecked() {
+    if(this.selectedGameType != "" || this.selectedPlayer.length != 0 || this.playerWon != 0 || this.runnings != 0 ||
+        this.tailor != 0 || this.contra != 0 || this.ramschWinner != "" || this.ramschLooser != "") {
+      $(document).ready(function() {
+        window.scrollTo(0,document.body.scrollHeight);
+      });
+    }
+  }
 
   newEntry() {
     this.newGame = true;
@@ -44,9 +51,7 @@ export class NewGameComponent implements OnInit {
     } else {
       this.playerCount = 1;
     }
-    $(document).ready(function() {
-      window.scrollTo(0,document.body.scrollHeight);
-    });  }
+  }
 
   setPlayer(player: string) {
     if(this.selectedPlayer.indexOf(player) == -1) {
@@ -57,50 +62,30 @@ export class NewGameComponent implements OnInit {
       this.selectedPlayer.splice(index, 1);
       this.playerSelected--;
     }
-    $(document).ready(function() {
-      window.scrollTo(0,document.body.scrollHeight);
-    });  }
+  }
 
   setPlayerWon(number: number) {
     this.playerWon = number;
-    $(document).ready(function() {
-      window.scrollTo(0,document.body.scrollHeight);
-    });
   }
 
   setRunnings(number: number) {
     this.runnings = number;
-    $(document).ready(function() {
-      window.scrollTo(0,document.body.scrollHeight);
-    });
   }
 
   setTailor(number: number) {
     this.tailor = number;
-    $(document).ready(function() {
-      window.scrollTo(0,document.body.scrollHeight);
-    });
   }
 
   setContra(number: number) {
     this.contra = number;
-    $(document).ready(function() {
-      window.scrollTo(0,document.body.scrollHeight);
-    });
   }
 
   setRamschWinner(player: string) {
     this.ramschWinner = player;
-    $(document).ready(function() {
-      window.scrollTo(0,document.body.scrollHeight);
-    });
   }
 
   setRamschLooser(player: string) {
     this.ramschLooser = player;
-    $(document).ready(function() {
-      window.scrollTo(0,document.body.scrollHeight);
-    });
   }
 
   calc() {
@@ -134,6 +119,7 @@ export class NewGameComponent implements OnInit {
           }
         }
       }
+      this.appComponent.fillLocalStorage();
       this.resetAll();
     }
     if(this.selectedGameType == "Sauspiel") {
@@ -165,6 +151,7 @@ export class NewGameComponent implements OnInit {
           }
         }
       }
+      this.appComponent.fillLocalStorage();
       this.resetAll();
     }
     if(this.selectedGameType == "Bettler") {
@@ -187,6 +174,7 @@ export class NewGameComponent implements OnInit {
           }
         }
       }
+      this.appComponent.fillLocalStorage();
       this.resetAll();
     }
     if(this.selectedGameType == "Ramsch") {
@@ -199,6 +187,7 @@ export class NewGameComponent implements OnInit {
           entry.money -= amount;
         }
       }
+      this.appComponent.fillLocalStorage();
       this.resetAll();
     }
   }
@@ -216,17 +205,5 @@ export class NewGameComponent implements OnInit {
     this.contra = 0;
     this.ramschWinner = "";
     this.ramschLooser = "";
-  }
-
-  setCssPlayer(name: string) {
-    for(let entry of this.selectedPlayer) {
-      if(entry === name) {
-        console.log(entry);
-        return true;
-      } else {
-        console.log(entry);
-        return false;
-      }
-    }
   }
 }

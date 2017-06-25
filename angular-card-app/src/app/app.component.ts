@@ -53,6 +53,6 @@ export class AppComponent {
   }
 
   restart() {
-    this.tableReady = false;
+    this.tableReady = !this.tableReady;
   }
 }
