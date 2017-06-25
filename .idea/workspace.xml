@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2c68321b-d1ba-4ad1-aaec-438c3c917381" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular-card-app/src/app/app.component.html" afterPath="$PROJECT_DIR$/angular-card-app/src/app/app.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular-card-app/src/app/app.component.ts" afterPath="$PROJECT_DIR$/angular-card-app/src/app/app.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.css" afterPath="$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.html" afterPath="$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.ts" afterPath="$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular-card-app/src/app/app.component.css" afterPath="$PROJECT_DIR$/angular-card-app/src/app/app.component.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular-card-app/src/styles.css" afterPath="$PROJECT_DIR$/angular-card-app/src/styles.css" />
     </list>
     <ignored path="angular-card-app.iws" />
@@ -56,7 +52,17 @@
         <entry file="file://$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
+              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new-game.component.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -72,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular-card-app/src/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+            <state relative-caret-position="255">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -85,8 +91,8 @@
       <file leaf-file-name="app.component.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular-card-app/src/app/app.component.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="31" />
+            <state relative-caret-position="68">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -107,6 +113,7 @@
         <option value="$PROJECT_DIR$/angular-card-app/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/angular-card-app/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/angular-card-app/src/styles.css" />
+        <option value="$PROJECT_DIR$/angular-card-app/src/app/app.component.css" />
       </list>
     </option>
   </component>
@@ -310,12 +317,12 @@
       <workItem from="1498256331619" duration="6574000" />
       <workItem from="1498306602709" duration="12069000" />
       <workItem from="1498324911982" duration="16263000" />
-      <workItem from="1498380005439" duration="6080000" />
+      <workItem from="1498380005439" duration="7108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40986000" />
+    <option name="totallyTimeSpent" value="42014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -463,14 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angular-card-app/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="868">
@@ -490,7 +489,7 @@
     <entry file="file://$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -505,18 +504,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angular-card-app/src/app/app.component.css">
+    <entry file="file://$PROJECT_DIR$/angular-card-app/src/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="31" />
+        <state relative-caret-position="255">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angular-card-app/src/styles.css">
+    <entry file="file://$PROJECT_DIR$/angular-card-app/src/app/app.component.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        <state relative-caret-position="68">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular-card-app/src/app/new-game/new-game.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
