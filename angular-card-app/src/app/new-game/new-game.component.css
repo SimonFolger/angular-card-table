@@ -1,0 +1,7 @@
+button.active {
+    background-color: red;
+}
+.btn-grp {
+    padding: 5px 0;
+    width: 48%;
+}

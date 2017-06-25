@@ -3,45 +3,45 @@
 <div *ngIf="newGame == true">
   <div>
     <p>Spieltyp wählen:</p>
-    <button *ngFor="let gametype of gameTypes" (click)="setGameType(gametype)">{{gametype}}</button>
+    <button *ngFor="let gametype of gameTypes" (click)="setGameType(gametype)" [class.active]="gametype === selectedGameType" class="btn-grp">{{gametype}}</button>
   </div>
   <div *ngIf="playerCount != 0 && selectedGameType != 'Ramsch'">
     <p>Spieler:</p>
-    <button *ngFor="let player of players" (click)="setPlayer(player.name)">{{player.name}}</button>
+    <button *ngFor="let player of players" (click)="setPlayer(player.name)" [class.active]="player.name === selectedPlayer[0]" class="btn-grp">{{player.name}}</button>
   </div>
   <div *ngIf="playerCount == playerSelected && playerCount != 0">
     <p>Spieler gewonnen?</p>
-    <button (click)="playerWon = 1">Ja</button>
-    <button (click)="playerWon = 2">Nein</button>
+    <button (click)="setPlayerWon(1)" [class.active]="playerWon == 1" class="btn-grp">Ja</button>
+    <button (click)="setPlayerWon(2)" [class.active]="playerWon == 2" class="btn-grp">Nein</button>
   </div>
-  <div *ngIf="playerWon != 0">
+  <div *ngIf="playerWon != 0 && selectedGameType != 'Bettler'">
     <p>Laufende:</p>
-    <button (click)="runnings = 1">Keine</button>
-    <button (click)="runnings = 3">3</button>
-    <button (click)="runnings = 4">4</button>
-    <button (click)="runnings = 5">5</button>
-    <button (click)="runnings = 6">6</button>
-    <button (click)="runnings = 7">7</button>
-    <button (click)="runnings = 8">8</button>
+    <button (click)="setRunnings(1)" [class.active]="runnings == 1" class="btn-grp">Keine</button>
+    <button (click)="setRunnings(3)" [class.active]="runnings == 3" class="btn-grp">3</button>
+    <button (click)="setRunnings(4)" [class.active]="runnings == 4" class="btn-grp">4</button>
+    <button (click)="setRunnings(5)" [class.active]="runnings == 5" class="btn-grp">5</button>
+    <button (click)="setRunnings(6)" [class.active]="runnings == 6" class="btn-grp">6</button>
+    <button (click)="setRunnings(7)" [class.active]="runnings == 7" class="btn-grp">7</button>
+    <button (click)="setRunnings(8)" [class.active]="runnings == 8" class="btn-grp">8</button>
   </div>
   <div *ngIf="runnings != 0">
     <p>Schneider:</p>
-    <button (click)="tailor = 1">Ja</button>
-    <button (click)="tailor = 2">Nein</button>
-    <button (click)="tailor = 3">Schwarz</button>
+    <button (click)="setTailor(1)" [class.active]="tailor == 1" class="btn-grp">Ja</button>
+    <button (click)="setTailor(2)" [class.active]="tailor == 2" class="btn-grp">Nein</button>
+    <button (click)="setTailor(3)" [class.active]="tailor == 3" class="btn-grp">Schwarz</button>
   </div>
-  <div *ngIf="tailor != 0">
+  <div *ngIf="tailor != 0 || (selectedGameType == 'Bettler' && playerWon != 0)">
     <p>Kontra?</p>
-    <button (click)="contra = 1">Ja</button>
-    <button (click)="contra = 2">Nein</button>
+    <button (click)="setContra(1)" [class.active]="contra == 1" class="btn-grp">Ja</button>
+    <button (click)="setContra(2)" [class.active]="contra == 2" class="btn-grp">Nein</button>
   </div>
   <div *ngIf="selectedGameType == 'Ramsch'">
     <p>Gewinner:</p>
-    <button *ngFor="let player of players" (click)="setRamschWinner(player.name)">{{player.name}}</button>
+    <button *ngFor="let player of players" (click)="setRamschWinner(player.name)" [class.active]="player.name === ramschWinner" class="btn-grp">{{player.name}}</button>
   </div>
   <div *ngIf="ramschWinner != ''">
     <p>Verlierer:</p>
-    <button *ngFor="let player of players" (click)="setRamschLooser(player.name)">{{player.name}}</button>
+    <button *ngFor="let player of players" (click)="setRamschLooser(player.name)" [class.active]="player.name === ramschLooser" class="btn-grp">{{player.name}}</button>
   </div>
   <button *ngIf="contra != 0 || ramschLooser != 0" (click)="calc()">Fertig</button>
 </div>

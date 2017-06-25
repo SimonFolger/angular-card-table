@@ -9,10 +9,10 @@ export class AppComponent {
   title = 'app';
 
   players: {name: string, money: number}[] = [
-    {"name": "", "money": null},
-    {"name": "", "money": null},
-    {"name": "", "money": null},
-    {"name": "", "money": null}
+    {"name": "", "money": 0},
+    {"name": "", "money": 0},
+    {"name": "", "money": 0},
+    {"name": "", "money": 0}
   ];
   
 
