@@ -9,3 +9,7 @@ button.active {
 .newgame {
  padding: 2%;
 }
+
+p {
+  text-align: center;
+}

@@ -44,3 +44,8 @@ app-header {
   padding: 0%;
   margin: 0%;
 }
+
+.buttons button{
+margin-top: 0;
+
+}
