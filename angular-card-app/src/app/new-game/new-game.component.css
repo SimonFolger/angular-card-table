@@ -1,15 +1,22 @@
+.newgame {
+    text-align: center;
+}
+.newgame div p {
+    margin-bottom: 1px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+.newEntry {
+    float: right;
+    margin-right: 0;
+}
 button.active {
     background-color: #fb8c00;
 }
 .btn-grp {
     padding: 5px 0;
-    width: 48%;
+    width: 47%;
 }
-
-.newgame {
- padding: 2%;
-}
-
 p {
   text-align: center;
 }

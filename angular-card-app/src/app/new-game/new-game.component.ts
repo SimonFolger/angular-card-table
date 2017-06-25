@@ -54,14 +54,31 @@ export class NewGameComponent implements AfterViewChecked {
   }
 
   setPlayer(player: string) {
-    if(this.selectedPlayer.indexOf(player) == -1) {
-      this.selectedPlayer.push(player);
-      this.playerSelected++;
-    } else {
-      var index = this.selectedPlayer.indexOf(player);
-      this.selectedPlayer.splice(index, 1);
-      this.playerSelected--;
+    console.log(this.selectedPlayer.length);
+    if(this.selectedGameType == "Sauspiel") {
+      if (this.selectedPlayer.indexOf(player) == -1 && this.selectedPlayer.length < 2) {
+        this.selectedPlayer.push(player);
+        this.playerSelected++;
+      } else {
+        var index = this.selectedPlayer.indexOf(player);
+        if(index > -1) {
+          this.selectedPlayer.splice(index, 1);
+          this.playerSelected--;
+        }
+      }
+    } else if(this.selectedGameType != "Sauspiel") {
+      if (this.selectedPlayer.indexOf(player) == -1 && this.selectedPlayer.length < 1) {
+        this.selectedPlayer.push(player);
+        this.playerSelected++;
+      } else {
+        var index = this.selectedPlayer.indexOf(player);
+        if(index > -1) {
+          this.selectedPlayer.splice(index, 1);
+          this.playerSelected--;
+        }
+      }
     }
+    console.log(this.selectedPlayer);
   }
 
   setPlayerWon(number: number) {
@@ -89,6 +106,20 @@ export class NewGameComponent implements AfterViewChecked {
   }
 
   calc() {
+    this.appComponent.moneyOld4 = this.appComponent.moneyOld3;
+    this.appComponent.moneyOld3 = [];
+    this.appComponent.moneyOld3 = this.appComponent.moneyOld2;
+    this.appComponent.moneyOld2 = [];
+    this.appComponent.moneyOld2 = this.appComponent.moneyOld1;
+    this.appComponent.moneyOld1 = [];
+    this.appComponent.moneyOld1.push(this.appComponent.players[0].money.toString());
+    this.appComponent.moneyOld1.push(this.appComponent.players[1].money.toString());
+    this.appComponent.moneyOld1.push(this.appComponent.players[2].money.toString());
+    this.appComponent.moneyOld1.push(this.appComponent.players[3].money.toString());
+    console.log(this.appComponent.moneyOld1);
+    console.log(this.appComponent.moneyOld2);
+    console.log(this.appComponent.moneyOld3);
+    console.log(this.appComponent.moneyOld4);
     let amount: number;
     if(this.selectedGameType == "Solo") {
       amount = 30;

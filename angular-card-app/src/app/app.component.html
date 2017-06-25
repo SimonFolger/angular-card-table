@@ -1,52 +1,83 @@
 <app-header></app-header>
-<div class="buttons">
-  <button (click)="restart()">Manuelle Eingabe</button>
+
+<div class="edit-data">
+  <button *ngIf="editMode == false" (click)="setEditMode()">Daten ändern</button>
+  <button *ngIf="editMode == true" (click)="setEditMode()">Abbrechen</button>
 </div>
+
+<div class="edit-buttons" *ngIf="editMode == true">
+  <button (click)="changeData()">Manuelle Eingabe</button>
   <button (click)="generateString()">String erzeugen</button>
-  <button (click)="readString = true">String eingeben</button>
-
-
-<div *ngIf="tableReady == false">
-  <div>
-    <label>Spieler1: </label>
-    <input [(ngModel)]="players[0].name">
-    <label>Moneyz: </label>
-    <input [(ngModel)]="players[0].money">
-  </div>
-  <div>
-    <label>Spieler2: </label>
-    <input [(ngModel)]="players[1].name">
-    <label>Moneyz: </label>
-    <input [(ngModel)]="players[1].money">
-  </div>
-  <div>
-    <label>Spieler3: </label>
-    <input [(ngModel)]="players[2].name">
-    <label>Moneyz: </label>
-    <input [(ngModel)]="players[2].money">
-  </div>
-  <div>
-    <label>Spieler4: </label>
-    <input [(ngModel)]="players[3].name">
-    <label>Moneyz: </label>
-    <input [(ngModel)]="players[3].money">
-  </div>
-  <button (click)="done()">Fertig</button>
+  <button (click)="enterString()">String eingeben</button>
 </div>
 
-<div *ngIf="tableReady == true">
+<div class="stringcpy" *ngIf="stringCpy == true && editMode == true">
+  <input [(ngModel)]="generatedString" placeholder="String kopieren">
+</div>
+
+<div class="stringenter" *ngIf="stringEnter == true && editMode == true">
+    <input [(ngModel)]="enteredString" placeholder="String eingeben">
+    <button (click)="transformString()">Daten ändern</button>
+</div>
+
+<form class="data-input" *ngIf="dataChange == true">
+
+    <input [(ngModel)]="players[0].name" placeholder="Spieler1">
+
+    <input [(ngModel)]="players[0].money" placeholder="Moneyz">
+
+    <input [(ngModel)]="players[1].name" placeholder="Spieler2">
+
+    <input [(ngModel)]="players[1].money" placeholder="Moneyz">
+
+    <input [(ngModel)]="players[2].name" placeholder="Spieler3">
+
+    <input [(ngModel)]="players[2].money" placeholder="Moneyz">
+
+    <input [(ngModel)]="players[3].name" placeholder="Spieler4">
+
+    <input [(ngModel)]="players[3].money" placeholder="Moneyz">
+
+  <button (click)="done()">Fertig</button>
+</form>
+
+<div *ngIf="localStorageFilled()">
   <table>
-    <tr>
-      <th>{{players[0].name}}</th>
-      <th>{{players[1].name}}</th>
-      <th>{{players[2].name}}</th>
-      <th>{{players[3].name}}</th>
-    </tr>
-    <tr>
-      <td>{{players[0].money}}</td>
-      <td>{{players[1].money}}</td>
-      <td>{{players[2].money}}</td>
-      <td>{{players[3].money}}</td>
+      <tr>
+          <th>{{players[0].name}}</th>
+          <th>{{players[1].name}}</th>
+          <th>{{players[2].name}}</th>
+          <th>{{players[3].name}}</th>
+      </tr>
+      <tr *ngIf="moneyOld4.length == 4">
+          <td>{{moneyOld4[0]}}</td>
+          <td>{{moneyOld4[1]}}</td>
+          <td>{{moneyOld4[2]}}</td>
+          <td>{{moneyOld4[3]}}</td>
+      </tr>
+      <tr *ngIf="moneyOld3.length == 4">
+          <td>{{moneyOld3[0]}}</td>
+          <td>{{moneyOld3[1]}}</td>
+          <td>{{moneyOld3[2]}}</td>
+          <td>{{moneyOld3[3]}}</td>
+      </tr>
+      <tr *ngIf="moneyOld2.length == 4">
+          <td>{{moneyOld2[0]}}</td>
+          <td>{{moneyOld2[1]}}</td>
+          <td>{{moneyOld2[2]}}</td>
+          <td>{{moneyOld2[3]}}</td>
+      </tr>
+      <tr *ngIf="moneyOld1.length == 4">
+          <td>{{moneyOld1[0]}}</td>
+          <td>{{moneyOld1[1]}}</td>
+          <td>{{moneyOld1[2]}}</td>
+          <td>{{moneyOld1[3]}}</td>
+      </tr>
+      <tr>
+          <td>{{players[0].money}}</td>
+          <td>{{players[1].money}}</td>
+          <td>{{players[2].money}}</td>
+          <td>{{players[3].money}}</td>
     </tr>
   </table>
 

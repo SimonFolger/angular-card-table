@@ -6,38 +6,16 @@ table {
 th, td {
     text-align: center;
     padding: 8px;
+    font-weight: bold;
 }
 
-tr:nth-child(even){background-color: #53a6dc}
+tr:last-child {
+    background-color: #53a6dc;
+}
 
 th {
     background-color:#2280c6;
     color: white;
-}
-
-label {
-  width: 25%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-  width: 100%;
-    background-color: #2280c6;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-  background-color: #53a6dc;
 }
 
 app-header {
@@ -45,7 +23,37 @@ app-header {
   margin: 0%;
 }
 
-.buttons button{
-margin-top: 0;
-
+.edit-data {
+    float: right;
+}
+.edit-data button {
+    float: right;
+}
+.edit-buttons {
+    text-align: center;
+    clear: both;
+    width: 100%;
+}
+.edit-buttons button{
+    width: 30%;
+    margin: 4px 1%;
+}
+.data-input {
+    text-align: center;
+}
+.stringcpy {
+    text-align: center;
+}
+.stringcpy input {
+    width: 95%;
+    margin-bottom: 5px;
+}
+.stringenter {
+    text-align: center;
+}
+.stringenter input {
+    width: 95%;
+}
+.stringenter button {
+    float: right;
 }

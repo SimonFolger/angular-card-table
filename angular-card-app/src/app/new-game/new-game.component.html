@@ -1,4 +1,4 @@
-<button *ngIf="newGame == false" (click)="newEntry()">Neuer Eintrag</button>
+<button class="newEntry" *ngIf="newGame == false" (click)="newEntry()">Neuer Eintrag</button>
 
 <div class="newgame" *ngIf="newGame == true">
   <div>
@@ -7,7 +7,7 @@
   </div>
   <div *ngIf="playerCount != 0 && selectedGameType != 'Ramsch'" (change)="test()">
     <p>Spieler:</p>
-    <button *ngFor="let player of players" (click)="setPlayer(player.name)" [class.active]="player.name === selectedPlayer[0]" class="btn-grp">{{player.name}}</button>
+    <button *ngFor="let player of players" (click)="setPlayer(player.name)" [class.active]="player.name === selectedPlayer[0] || player.name === selectedPlayer[1]" class="btn-grp">{{player.name}}</button>
   </div>
   <div *ngIf="playerCount == playerSelected && playerCount != 0">
     <p>Spieler gewonnen?</p>

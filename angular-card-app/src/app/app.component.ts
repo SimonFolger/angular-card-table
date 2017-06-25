@@ -14,9 +14,17 @@ export class AppComponent {
     {"name": "", "money": 0},
     {"name": "", "money": 0}
   ];
+  moneyOld1: string[] = [];
+  moneyOld2: string[] = [];
+  moneyOld3: string[] = [];
+  moneyOld4: string[] = [];
   
-
-  tableReady = false;
+  editMode = false;
+  dataChange = false;
+  generatedString = "";
+  stringCpy = false;
+  stringEnter = false;
+  enteredString = "";
 
   ngOnInit() {
     if(localStorage.getItem("player1") !== null) {
@@ -28,15 +36,24 @@ export class AppComponent {
       this.players[2].money = Number(localStorage.getItem("money3"));
       this.players[3].name = localStorage.getItem("player4");
       this.players[3].money = Number(localStorage.getItem("money4"));
-      this.tableReady = true;
+      this.dataChange = false;
+    }
+  }
+
+  localStorageFilled() {
+    if(localStorage.getItem("player1") !== null) {
+      return true;
+    } else {
+      return false;
     }
   }
 
   done() {
     for(let entry of this.players) {
       if(entry.name.length > 0 && entry.money != null) {
-        this.tableReady = true;
+        this.dataChange = false;
         this.fillLocalStorage();
+        this.editMode = false;
       }
     }
   }
@@ -52,7 +69,48 @@ export class AppComponent {
     localStorage.setItem("money4", this.players[3].money.toString());
   }
 
-  restart() {
-    this.tableReady = !this.tableReady;
+  setEditMode() {
+    this.editMode = !this.editMode;
+    this.stringCpy = false;
+    this.stringEnter = false;
+  }
+
+  changeData() {
+    this.dataChange = !this.dataChange;
+    this.stringCpy = false;
+    this.stringEnter = false;
+  }
+
+  generateString() {
+    this.stringCpy = !this.stringCpy;
+    this.dataChange = false;
+    this.stringEnter = false;
+    this.generatedString = this.players[0].name + "/" + this.players[0].money.toString() + "/" +
+        this.players[1].name + "/" + this.players[1].money.toString() + "/" + this.players[2].name + "/" +
+        this.players[2].money.toString() + "/" + this.players[3].name + "/" + this.players[3].money.toString();
+  }
+
+  transformString() {
+    let splitted = this.enteredString.split("/");
+    if(splitted.length == 8) {
+      this.players[0].name = splitted[0];
+      this.players[0].money = +splitted[1];
+      this.players[1].name = splitted[2];
+      this.players[1].money = +splitted[3];
+      this.players[2].name = splitted[4];
+      this.players[2].money = +splitted[5];
+      this.players[3].name = splitted[6];
+      this.players[3].money = +splitted[7];
+      this.enteredString = "";
+      this.editMode = false;
+      this.stringEnter = false;
+      this.fillLocalStorage();
+    }
+  }
+
+  enterString() {
+    this.stringEnter = !this.stringEnter;
+    this.dataChange = false;
+    this.stringCpy = false;
   }
 }
