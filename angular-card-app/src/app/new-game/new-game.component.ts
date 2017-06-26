@@ -119,117 +119,132 @@ export class NewGameComponent implements AfterViewChecked {
     this.appComponent.moneyOld1.push(this.appComponent.players[1].money.toString());
     this.appComponent.moneyOld1.push(this.appComponent.players[2].money.toString());
     this.appComponent.moneyOld1.push(this.appComponent.players[3].money.toString());
-    console.log(this.appComponent.moneyOld1);
-    console.log(this.appComponent.moneyOld2);
-    console.log(this.appComponent.moneyOld3);
-    console.log(this.appComponent.moneyOld4);
-    let amount: number;
+
+
     if(this.selectedGameType == "Solo") {
-      amount = 30;
-      if(this.runnings > 2) {
-        amount += (this.runnings - 2) * 15;
-      }
-      if(this.tailor == 1) {
-        amount += 15;
-      }
-      if(this.tailor == 3) {
-        amount += 30;
-      }
-      if(this.contra == 1) {
-        amount += 30;
-      }
-      for(let entry of this.players) {
-        if(entry.name == this.selectedPlayer[0]) {
-          if(this.playerWon == 1) {
-            entry.money += amount;
-          } else {
-            entry.money -= amount;
-          }
-        } else {
-          if(this.playerWon == 1) {
-            entry.money -= amount / 3;
-          } else {
-            entry.money += amount / 3;
-          }
+      this.solo();
         }
-      }
-      this.appComponent.fillLocalStorage();
-      this.resetAll();
-      this.gameCounter++;
-    }
+
     if(this.selectedGameType == "Sauspiel") {
-      amount = 20;
-      if(this.runnings > 2) {
-        amount += (this.runnings - 2) * 10;
-      }
-      if(this.tailor == 1) {
-        amount += 10;
-      }
-      if(this.tailor == 3) {
-        amount += 20;
-      }
-      if(this.contra == 1) {
-        amount += 20;
-      }
-      for(let entry of this.players) {
-        if(entry.name == this.selectedPlayer[0] || entry.name == this.selectedPlayer[1]) {
-          if(this.playerWon == 1) {
-            entry.money += amount / 2;
-          } else {
-            entry.money -= amount / 2;
-          }
-        } else {
-          if(this.playerWon == 1) {
-            entry.money -= amount / 2;
-          } else {
-            entry.money += amount / 2;
-          }
-        }
-      }
-      this.appComponent.fillLocalStorage();
-      this.resetAll();
-      this.gameCounter++;
+      this.sauspiel();
     }
+
     if(this.selectedGameType == "Bettler") {
-      amount = 30;
-      if(this.contra == 1) {
-        amount += 15;
-      }
-      for(let entry of this.players) {
-        if(entry.name == this.selectedPlayer[0]) {
-          if(this.playerWon == 1) {
-            entry.money += amount;
-          } else {
-            entry.money -= amount;
-          }
-        } else {
-          if(this.playerWon == 1) {
-            entry.money -= amount / 3;
-          } else {
-            entry.money += amount / 3;
-          }
-        }
-      }
-      this.appComponent.fillLocalStorage();
-      this.resetAll();
-      this.gameCounter++;
+      this.bettler();
     }
+
     if(this.selectedGameType == "Ramsch") {
-      amount = 20;
-      for(let entry of this.players) {
-        if(entry.name == this.ramschWinner) {
+      this.ramsch();
+    }
+
+  this.afterGameComplete();
+  }
+
+afterGameComplete() {
+    this.appComponent.fillLocalStorage();
+    this.resetAll();
+    this.gameCounter++;
+    }
+
+  solo() {
+    let amount: number;
+    amount = 30;
+    if(this.runnings > 2) {
+      amount += (this.runnings - 2) * 15;
+    }
+    if(this.tailor == 1) {
+      amount += 15;
+    }
+    if(this.tailor == 3) {
+      amount += 30;
+    }
+    if(this.contra == 1) {
+      amount += 30;
+    }
+    for(let entry of this.players) {
+      if(entry.name == this.selectedPlayer[0]) {
+        if(this.playerWon == 1) {
           entry.money += amount;
-        }
-        if(entry.name == this.ramschLooser) {
+        } else {
           entry.money -= amount;
         }
+      } else {
+        if(this.playerWon == 1) {
+          entry.money -= amount / 3;
+        } else {
+          entry.money += amount / 3;
+        }
       }
-      this.appComponent.fillLocalStorage();
-      this.resetAll();
-      this.gameCounter++;
     }
   }
 
+  bettler() {
+    let amount: number;
+    amount = 30;
+    if(this.contra == 1) {
+      amount += 15;
+    }
+    for(let entry of this.players) {
+      if(entry.name == this.selectedPlayer[0]) {
+        if(this.playerWon == 1) {
+          entry.money += amount;
+        } else {
+          entry.money -= amount;
+        }
+      } else {
+        if(this.playerWon == 1) {
+          entry.money -= amount / 3;
+        } else {
+          entry.money += amount / 3;
+        }
+      }
+    }
+  }
+
+  ramsch() {
+    let amount: number;
+    amount = 20;
+    for(let entry of this.players) {
+      if(entry.name == this.ramschWinner) {
+        entry.money += amount;
+      }
+      if(entry.name == this.ramschLooser) {
+        entry.money -= amount;
+      }
+    }
+  }
+
+  sauspiel() {
+    let amount: number;
+    amount = 20;
+    if(this.runnings > 2) {
+      amount += (this.runnings - 2) * 10;
+    }
+    if(this.tailor == 1) {
+      amount += 10;
+    }
+    if(this.tailor == 3) {
+      amount += 20;
+    }
+    if(this.contra == 1) {
+      amount += 20;
+    }
+    for(let entry of this.players) {
+      if(entry.name == this.selectedPlayer[0] || entry.name == this.selectedPlayer[1]) {
+        if(this.playerWon == 1) {
+          entry.money += amount / 2;
+        } else {
+          entry.money -= amount / 2;
+        }
+      } else {
+        if(this.playerWon == 1) {
+          entry.money -= amount / 2;
+        } else {
+          entry.money += amount / 2;
+        }
+      }
+    }
+  }
 
   resetAll() {
     this.newGame = false;
