@@ -7,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
-  }
-
-  ngOnInit() {
-
-  }
+constructor() {
 }
+
+ngOnInit() {
+
+}
+
+  player="";
+
+  buttons:string[]=[];
+
+  newbutton() {
+  console.log("kacke"+this.player);
+this.buttons.push(this.player);
+    }
+
+
+  }

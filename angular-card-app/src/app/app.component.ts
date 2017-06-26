@@ -18,7 +18,7 @@ export class AppComponent {
   moneyOld2: string[] = [];
   moneyOld3: string[] = [];
   moneyOld4: string[] = [];
-  
+
   editMode = false;
   dataChange = false;
   generatedString = "";
@@ -27,7 +27,7 @@ export class AppComponent {
   enteredString = "";
 
   ngOnInit() {
-    if(localStorage.getItem("player1") !== null) {
+    if(localStorageFilled()) {
       this.players[0].name = localStorage.getItem("player1");
       this.players[0].money = Number(localStorage.getItem("money1"));
       this.players[1].name = localStorage.getItem("player2");
