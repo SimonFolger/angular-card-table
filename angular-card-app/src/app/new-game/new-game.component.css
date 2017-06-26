@@ -20,3 +20,6 @@ button.active {
 p {
   text-align: center;
 }
+.gameCounter {
+  color: red;
+}
