@@ -73,6 +73,7 @@ export class AppComponent {
     this.editMode = !this.editMode;
     this.stringCpy = false;
     this.stringEnter = false;
+    this.dataChange = false;
   }
 
   changeData() {

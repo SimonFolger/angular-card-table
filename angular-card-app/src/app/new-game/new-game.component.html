@@ -1,4 +1,7 @@
-<button class="newEntry" *ngIf="newGame == false" (click)="newEntry()">Neuer Eintrag</button>
+<span>{{gameCounter}}</span>
+<button class="newEntry" *ngIf="newGame == false && ramschTime == false && heartSoloTime == false" (click)="newEntry()">Neuer Eintrag</button>
+
+
 
 <div class="newgame" *ngIf="newGame == true">
   <div>

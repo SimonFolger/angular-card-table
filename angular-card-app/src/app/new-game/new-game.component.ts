@@ -10,6 +10,7 @@ declare var $: any;
 })
 export class NewGameComponent implements AfterViewChecked {
 
+  gameCounter = 0;
   players = this.appComponent.players;
   newGame = false;
   gameTypes = ["Solo", "Sauspiel", "Bettler", "Ramsch"];
@@ -25,6 +26,8 @@ export class NewGameComponent implements AfterViewChecked {
   contra = 0;
   ramschWinner = "";
   ramschLooser = "";
+  ramschTime = false;
+  heartSoloTime = false;
 
   test1 = "";
   test2 = "";
@@ -152,6 +155,7 @@ export class NewGameComponent implements AfterViewChecked {
       }
       this.appComponent.fillLocalStorage();
       this.resetAll();
+      this.gameCounter++;
     }
     if(this.selectedGameType == "Sauspiel") {
       amount = 20;
@@ -184,6 +188,7 @@ export class NewGameComponent implements AfterViewChecked {
       }
       this.appComponent.fillLocalStorage();
       this.resetAll();
+      this.gameCounter++;
     }
     if(this.selectedGameType == "Bettler") {
       amount = 30;
@@ -207,6 +212,7 @@ export class NewGameComponent implements AfterViewChecked {
       }
       this.appComponent.fillLocalStorage();
       this.resetAll();
+      this.gameCounter++;
     }
     if(this.selectedGameType == "Ramsch") {
       amount = 20;
@@ -220,6 +226,7 @@ export class NewGameComponent implements AfterViewChecked {
       }
       this.appComponent.fillLocalStorage();
       this.resetAll();
+      this.gameCounter++;
     }
   }
 

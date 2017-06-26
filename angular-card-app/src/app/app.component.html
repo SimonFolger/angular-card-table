@@ -20,7 +20,7 @@
     <button (click)="transformString()">Daten ändern</button>
 </div>
 
-<form class="data-input" *ngIf="dataChange == true">
+<div class="data-input" *ngIf="dataChange == true">
 
     <input [(ngModel)]="players[0].name" placeholder="Spieler1">
 
@@ -39,7 +39,7 @@
     <input [(ngModel)]="players[3].money" placeholder="Moneyz">
 
   <button (click)="done()">Fertig</button>
-</form>
+</div>
 
 <div *ngIf="localStorageFilled()">
   <table>
