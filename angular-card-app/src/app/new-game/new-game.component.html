@@ -1,10 +1,10 @@
-<span class="gameCounter">{{gameCounter}}</span>
+<span class="gameCounter">{{gameCounter}}. Runde, Pfilcht-Ramsch/Herz-Solo in {{11-(gameCounter%11)}} Runden.</span>
 <button class="newEntry" *ngIf="newGame == false && ramschTime == false && heartSoloTime == false && specialTime == false" (click)="newEntry()">Neuer Eintrag</button>
-<div *ngIf="newGame == true && ramschTime == true && heartSoloTime == false && specialTime == true">
+<div *ngIf="newGame == true && ramschTime == true && heartSoloTime == false && specialTime == true" class="specialGame">
   <h1>Pflicht-Ramsch!!!</h1>
   <button (click)="startRamsch()">Go!</button>
 </div>
-<div *ngIf="newGame == true && ramschTime == false && heartSoloTime == true && specialTime == true">
+<div *ngIf="newGame == true && ramschTime == false && heartSoloTime == true && specialTime == true" class="specialGame">
   <h1>Pflicht-Herz-Solo!!!</h1>
   <button (click)="startHeartSolo()">Go!</button>
 </div>

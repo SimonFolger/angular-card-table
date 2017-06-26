@@ -23,3 +23,6 @@ p {
 .gameCounter {
   color: red;
 }
+.specialGame {
+    text-align: center;
+}
