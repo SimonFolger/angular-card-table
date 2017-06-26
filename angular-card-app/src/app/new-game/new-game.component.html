@@ -1,14 +1,22 @@
 <span class="gameCounter">{{gameCounter}}</span>
-<button class="newEntry" *ngIf="newGame == false && ramschTime == false && heartSoloTime == false" (click)="newEntry()">Neuer Eintrag</button>
+<button class="newEntry" *ngIf="newGame == false && ramschTime == false && heartSoloTime == false && specialTime == false" (click)="newEntry()">Neuer Eintrag</button>
+<div *ngIf="newGame == true && ramschTime == true && heartSoloTime == false && specialTime == true">
+  <h1>Pflicht-Ramsch!!!</h1>
+  <button (click)="startRamsch()">Go!</button>
+</div>
+<div *ngIf="newGame == true && ramschTime == false && heartSoloTime == true && specialTime == true">
+  <h1>Pflicht-Herz-Solo!!!</h1>
+  <button (click)="startHeartSolo()">Go!</button>
+</div>
 
 
 
-<div class="newgame" *ngIf="newGame == true">
+<div class="newgame" *ngIf="newGame == true && specialTime == false">
   <div>
     <p>Spieltyp wählen:</p>
     <button *ngFor="let gametype of gameTypes" (click)="setGameType(gametype)" [class.active]="gametype === selectedGameType" class="btn-grp">{{gametype}}</button>
   </div>
-  <div *ngIf="playerCount != 0 && selectedGameType != 'Ramsch'" (change)="test()">
+  <div *ngIf="playerCount != 0 && selectedGameType != 'Ramsch'">
     <p>Spieler:</p>
     <button *ngFor="let player of players" (click)="setPlayer(player.name)" [class.active]="player.name === selectedPlayer[0] || player.name === selectedPlayer[1]" class="btn-grp">{{player.name}}</button>
   </div>
@@ -48,3 +56,4 @@
   </div>
   <button *ngIf="contra != 0 || ramschLooser != 0" (click)="calc()">Fertig</button>
 </div>
+

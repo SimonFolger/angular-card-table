@@ -28,6 +28,7 @@ export class NewGameComponent implements AfterViewChecked {
   ramschLooser = "";
   ramschTime = false;
   heartSoloTime = false;
+  specialTime = false;
 
   test1 = "";
   test2 = "";
@@ -123,7 +124,7 @@ export class NewGameComponent implements AfterViewChecked {
 
     if(this.selectedGameType == "Solo") {
       this.solo();
-        }
+    }
 
     if(this.selectedGameType == "Sauspiel") {
       this.sauspiel();
@@ -140,11 +141,41 @@ export class NewGameComponent implements AfterViewChecked {
   this.afterGameComplete();
   }
 
-afterGameComplete() {
+  afterGameComplete() {
     this.appComponent.fillLocalStorage();
     this.resetAll();
     this.gameCounter++;
+    this.gameMode();
+  }
+
+  gameMode() {
+    if(this.gameCounter % 11 == 0) {
+      let random = Math.floor(Math.random() * 2) + 1;
+      if(random == 1) {
+        this.specialTime = true;
+        this.heartSoloTime = true;
+      } else if(random == 2) {
+        this.specialTime = true;
+        this.ramschTime = true;        
+      }
+    } else {
+      this.newGame = false;
     }
+  }
+
+  startRamsch() {
+    this.newGame = true;
+    this.specialTime = false;
+    this.setGameType("Ramsch");
+    this.ramschTime = false;
+  }
+
+  startHeartSolo() {
+    this.newGame = true;
+    this.specialTime = false;
+    this.setGameType("Solo");
+    this.heartSoloTime = false;
+  }
 
   solo() {
     let amount: number;
@@ -164,7 +195,7 @@ afterGameComplete() {
     for(let entry of this.players) {
       if(entry.name == this.selectedPlayer[0]) {
         if(this.playerWon == 1) {
-          entry.money += amount;
+          entry.money = +entry.money + amount;
         } else {
           entry.money -= amount;
         }
@@ -172,7 +203,7 @@ afterGameComplete() {
         if(this.playerWon == 1) {
           entry.money -= amount / 3;
         } else {
-          entry.money += amount / 3;
+          entry.money = +entry.money + (amount / 3);
         }
       }
     }
@@ -187,7 +218,7 @@ afterGameComplete() {
     for(let entry of this.players) {
       if(entry.name == this.selectedPlayer[0]) {
         if(this.playerWon == 1) {
-          entry.money += amount;
+          entry.money = +entry.money + amount;
         } else {
           entry.money -= amount;
         }
@@ -195,7 +226,7 @@ afterGameComplete() {
         if(this.playerWon == 1) {
           entry.money -= amount / 3;
         } else {
-          entry.money += amount / 3;
+          entry.money = +entry.money + (amount / 3);
         }
       }
     }
@@ -206,7 +237,7 @@ afterGameComplete() {
     amount = 20;
     for(let entry of this.players) {
       if(entry.name == this.ramschWinner) {
-        entry.money += amount;
+        entry.money = +entry.money + amount;
       }
       if(entry.name == this.ramschLooser) {
         entry.money -= amount;
@@ -232,7 +263,7 @@ afterGameComplete() {
     for(let entry of this.players) {
       if(entry.name == this.selectedPlayer[0] || entry.name == this.selectedPlayer[1]) {
         if(this.playerWon == 1) {
-          entry.money += amount / 2;
+          entry.money = +entry.money + (amount / 2);
         } else {
           entry.money -= amount / 2;
         }
@@ -240,14 +271,13 @@ afterGameComplete() {
         if(this.playerWon == 1) {
           entry.money -= amount / 2;
         } else {
-          entry.money += amount / 2;
+          entry.money = +entry.money + (amount / 2);
         }
       }
     }
   }
 
   resetAll() {
-    this.newGame = false;
     this.selectedGameType = "";
     this.playerCount = 0;
     this.selectedPlayer = [];
@@ -258,5 +288,6 @@ afterGameComplete() {
     this.contra = 0;
     this.ramschWinner = "";
     this.ramschLooser = "";
+    this.specialTime = false;
   }
 }
