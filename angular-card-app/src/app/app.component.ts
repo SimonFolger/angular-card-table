@@ -27,7 +27,7 @@ export class AppComponent {
   enteredString = "";
 
   ngOnInit() {
-    if(localStorageFilled()) {
+    if(this.localStorageFilled()) {
       this.players[0].name = localStorage.getItem("player1");
       this.players[0].money = Number(localStorage.getItem("money1"));
       this.players[1].name = localStorage.getItem("player2");

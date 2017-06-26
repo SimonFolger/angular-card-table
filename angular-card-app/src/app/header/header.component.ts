@@ -18,10 +18,18 @@ ngOnInit() {
 
   buttons:string[]=[];
 
-  newbutton() {
-  console.log("kacke"+this.player);
+
+  newButton() {
+  if(this.buttons.length <= 4 ){
 this.buttons.push(this.player);
+      }
+      this.player="";
     }
+
+  deleteButton() {
+  this.buttons.splice(-1,1);
+  this.player="";
+  }
 
 
   }
