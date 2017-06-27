@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_player_newgame"
+        android:title="@string/action_player_newgame"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_player_new"
+        android:title="@string/action_player_new"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_change_money"
+        android:title="@string/action_change_money"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_game_back"
+        android:title="@string/action_game_back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_game_refresh"
+        android:title="@string/action_game_refresh"
+        app:showAsAction="never" />
+
+
+
+
+
+</menu>

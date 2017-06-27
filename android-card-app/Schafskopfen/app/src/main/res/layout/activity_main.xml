@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<fragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment"
+    android:name="com.firebaseapp.httpsschafkopfen_6d5ac.schafskopfen.app.PlayerlistFragment"
+    tools:layout="@layout/fragment_playerlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
