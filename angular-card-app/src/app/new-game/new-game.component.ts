@@ -1,5 +1,6 @@
-import { Component, OnInit, OnChanges, AfterViewChecked } from '@angular/core';
-import { AppComponent } from './../app.component';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { TableComponent } from './../table/table.component';
+import { AppComponent } from "../app.component";
 
 declare var $: any;
 
@@ -8,10 +9,11 @@ declare var $: any;
   templateUrl: './new-game.component.html',
   styleUrls: ['./new-game.component.css']
 })
-export class NewGameComponent implements AfterViewChecked {
+export class NewGameComponent implements AfterViewChecked, OnInit {
+
+  table = this.tableComponent.table;
 
   gameCounter = 0;
-  players = this.appComponent.players;
   newGame = false;
   gameTypes = ["Solo", "Sauspiel", "Bettler", "Ramsch"];
   showStyle = false;
@@ -30,10 +32,10 @@ export class NewGameComponent implements AfterViewChecked {
   heartSoloTime = false;
   specialTime = false;
 
-  test1 = "";
-  test2 = "";
 
-  constructor(private appComponent: AppComponent) {}
+  constructor(private tableComponent: TableComponent, private appComponent: AppComponent) {}
+
+  ngOnInit() { }
 
   ngAfterViewChecked() {
     if(this.selectedGameType != "" || this.selectedPlayer.length != 0 || this.playerWon != 0 || this.runnings != 0 ||
@@ -110,16 +112,16 @@ export class NewGameComponent implements AfterViewChecked {
   }
 
   calc() {
-    this.appComponent.moneyOld4 = this.appComponent.moneyOld3;
-    this.appComponent.moneyOld3 = [];
-    this.appComponent.moneyOld3 = this.appComponent.moneyOld2;
-    this.appComponent.moneyOld2 = [];
-    this.appComponent.moneyOld2 = this.appComponent.moneyOld1;
-    this.appComponent.moneyOld1 = [];
-    this.appComponent.moneyOld1.push(this.appComponent.players[0].money.toString());
-    this.appComponent.moneyOld1.push(this.appComponent.players[1].money.toString());
-    this.appComponent.moneyOld1.push(this.appComponent.players[2].money.toString());
-    this.appComponent.moneyOld1.push(this.appComponent.players[3].money.toString());
+    this.tableComponent.moneyOld4 = this.tableComponent.moneyOld3;
+    this.tableComponent.moneyOld3 = [];
+    this.tableComponent.moneyOld3 = this.tableComponent.moneyOld2;
+    this.tableComponent.moneyOld2 = [];
+    this.tableComponent.moneyOld2 = this.tableComponent.moneyOld1;
+    this.tableComponent.moneyOld1 = [];
+    this.tableComponent.moneyOld1.push(this.table.data[0].money.toString());
+    this.tableComponent.moneyOld1.push(this.table.data[1].money.toString());
+    this.tableComponent.moneyOld1.push(this.table.data[2].money.toString());
+    this.tableComponent.moneyOld1.push(this.table.data[3].money.toString());
 
 
     if(this.selectedGameType == "Solo") {
@@ -142,21 +144,21 @@ export class NewGameComponent implements AfterViewChecked {
   }
 
   afterGameComplete() {
-    this.appComponent.fillLocalStorage();
     this.resetAll();
-    this.gameCounter++;
+    +this.table.count++;
     this.gameMode();
+    this.appComponent.updateTableData(this.tableComponent.key, this.table);
   }
 
   gameMode() {
-    if(this.gameCounter % 11 == 0) {
+    if(this.table.count % 11 == 0) {
       let random = Math.floor(Math.random() * 2) + 1;
       if(random == 1) {
         this.specialTime = true;
         this.heartSoloTime = true;
       } else if(random == 2) {
         this.specialTime = true;
-        this.ramschTime = true;        
+        this.ramschTime = true;
       }
     } else {
       this.newGame = false;
@@ -179,20 +181,20 @@ export class NewGameComponent implements AfterViewChecked {
 
   solo() {
     let amount: number;
-    amount = 30;
+    amount = 0.30;
     if(this.runnings > 2) {
-      amount += (this.runnings - 2) * 15;
+      amount += (this.runnings - 2) * 0.15;
     }
     if(this.tailor == 1) {
-      amount += 15;
+      amount += 0.15;
     }
     if(this.tailor == 3) {
-      amount += 30;
+      amount += 0.30;
     }
     if(this.contra == 1) {
-      amount += 30;
+      amount += 0.30;
     }
-    for(let entry of this.players) {
+    for(let entry of this.table.data) {
       if(entry.name == this.selectedPlayer[0]) {
         if(this.playerWon == 1) {
           entry.money = +entry.money + amount;
@@ -211,11 +213,11 @@ export class NewGameComponent implements AfterViewChecked {
 
   bettler() {
     let amount: number;
-    amount = 30;
+    amount = 0.30;
     if(this.contra == 1) {
-      amount += 15;
+      amount += 0.15;
     }
-    for(let entry of this.players) {
+    for(let entry of this.table.data) {
       if(entry.name == this.selectedPlayer[0]) {
         if(this.playerWon == 1) {
           entry.money = +entry.money + amount;
@@ -234,8 +236,8 @@ export class NewGameComponent implements AfterViewChecked {
 
   ramsch() {
     let amount: number;
-    amount = 20;
-    for(let entry of this.players) {
+    amount = 0.20;
+    for(let entry of this.table.data) {
       if(entry.name == this.ramschWinner) {
         entry.money = +entry.money + amount;
       }
@@ -247,20 +249,20 @@ export class NewGameComponent implements AfterViewChecked {
 
   sauspiel() {
     let amount: number;
-    amount = 20;
+    amount = 0.20;
     if(this.runnings > 2) {
-      amount += (this.runnings - 2) * 10;
+      amount += (this.runnings - 2) * 0.10;
     }
     if(this.tailor == 1) {
-      amount += 10;
+      amount += 0.10;
     }
     if(this.tailor == 3) {
-      amount += 20;
+      amount += 0.20;
     }
     if(this.contra == 1) {
-      amount += 20;
+      amount += 0.20;
     }
-    for(let entry of this.players) {
+    for(let entry of this.table.data) {
       if(entry.name == this.selectedPlayer[0] || entry.name == this.selectedPlayer[1]) {
         if(this.playerWon == 1) {
           entry.money = +entry.money + (amount / 2);

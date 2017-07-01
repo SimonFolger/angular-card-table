@@ -1,12 +1,84 @@
-.schafskopfen {
-  background-image: url(../../assets/header.png);
-  background-repeat: repeat-x;
-  background-position: center;
-  padding: 0%;
-  margin: 0%;
-  height: 40px;
+@media screen and (min-width: 1000px) {
+  .mobile-nav {
     display: none;
+  }
 }
- input {
-   margin-left: 1%;
- }
+
+@media screen and (max-width: 999px) {
+  .desktop-nav {
+    display: none;
+  }
+}
+
+.burger {
+  height: 51px;
+}
+
+ul .burger:hover {
+  background-color: #2280c6;
+}
+
+.burger a i {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 45px;
+}
+
+.burger a i:hover {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #2280c6;
+}
+@media screen and (min-width: 1000px) {
+  ul {
+    height: 48px;
+  }
+}
+@media screen and (max-width: 999px) {
+  ul {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  li {
+    float: left;
+  }
+}
+
+li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 19px;
+}
+@media screen and (max-width: 999px) {
+  li a {
+    width: 100%;
+  }
+}
+
+li a i {
+  font-size: 22px;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+li:hover:not(.active) {
+  background-color: #53a6dc;
+}
+
+.active {
+  background-color: #fb8c00;
+}

@@ -1,0 +1,81 @@
+
+
+<div *ngIf="table != undefined">
+  <button class="data-change" *ngIf="dataChange == false" (click)="changeData()"><i class="material-icons">mode_edit</i></button>
+  <button class="data-change" *ngIf="dataChange == true" (click)="changeData()"><i class="material-icons">clear</i></button>
+  <div class="data-change" *ngIf="dataChange == true">
+    <div class="input">
+      <label>Player1:</label>
+      <input type="text" [(ngModel)]="table.data[0].name"/>
+    </div>
+    <div class="input">
+      <label>Money1:</label>
+      <input type="text" [(ngModel)]="table.data[0].money"/>
+    </div>
+    <div class="input">
+      <label>Player2:</label>
+      <input type="text" [(ngModel)]="table.data[1].name"/>
+    </div>
+    <div class="input">
+      <label>Money2:</label>
+      <input type="text" [(ngModel)]="table.data[1].money"/>
+    </div>
+    <div class="input">
+      <label>Player3:</label>
+      <input type="text" [(ngModel)]="table.data[2].name"/>
+    </div>
+    <div class="input">
+      <label>Money3:</label>
+      <input type="text" [(ngModel)]="table.data[2].money"/>
+    </div>
+    <div class="input">
+      <label>Player4:</label>
+      <input type="text" [(ngModel)]="table.data[3].name"/>
+    </div>
+    <div class="input">
+      <label>Money4:</label>
+      <input type="text" [(ngModel)]="table.data[3].money"/>
+    </div>
+    <div class="input game-counter">
+      <label>Spiel-Zähler:</label>
+      <input type="text" [(ngModel)]="table.count"/>
+    </div>
+    <div class="input save-data-button">
+      <button (click)="saveData()">Speichern</button>
+    </div>
+  </div>
+  <table>
+    <tr>
+      <th *ngFor="let player of table.data">{{player.name}}</th>
+    </tr>
+    <tr *ngIf="moneyOld4.length == 4">
+      <td>{{moneyOld4[0] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld4[1] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld4[2] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld4[3] | number : '1.2-2'}}€</td>
+    </tr>
+    <tr *ngIf="moneyOld3.length == 4">
+      <td>{{moneyOld3[0] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld3[1] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld3[2] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld3[3] | number : '1.2-2'}}€</td>
+    </tr>
+    <tr *ngIf="moneyOld2.length == 4">
+      <td>{{moneyOld2[0] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld2[1] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld2[2] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld2[3] | number : '1.2-2'}}€</td>
+    </tr>
+    <tr *ngIf="moneyOld1.length == 4">
+      <td>{{moneyOld1[0] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld1[1] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld1[2] | number : '1.2-2'}}€</td>
+      <td>{{moneyOld1[3] | number : '1.2-2'}}€</td>
+    </tr>
+    <tr>
+      <td *ngFor="let player of table.data">{{player.money | number : '1.2-2'}}€</td>
+    </tr>
+  </table>
+
+  <app-new-game></app-new-game>
+</div>

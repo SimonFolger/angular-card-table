@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from './../app.component'
+import { Table } from './../table';
+
+declare var $: any;
 
 @Component({
   selector: 'app-header',
@@ -7,29 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-constructor() {
-}
+  tables = this.appComponent.tablesDB;
 
-ngOnInit() {
+  homeRoute = "Home";
+  activeRoute = this.homeRoute;
+  menuOpen = false;
 
-}
+  constructor(private appComponent: AppComponent) {}
 
-  player="";
+  ngOnInit() {}
 
-  buttons:string[]=[];
-
-
-  newButton() {
-  if(this.buttons.length <= 4 ){
-this.buttons.push(this.player);
-      }
-      this.player="";
-    }
-
-  deleteButton() {
-  this.buttons.splice(-1,1);
-  this.player="";
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 
-
+  setActive(route: string) {
+    this.activeRoute = route;
+    this.menuOpen = false;
   }
+}

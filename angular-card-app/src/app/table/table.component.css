@@ -1,0 +1,69 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+}
+
+tr:last-child {
+    background-color: #53a6dc;
+}
+
+th {
+    background-color: #2280c6;
+    color: white;
+}
+.input {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.input label,input {
+  width: 100%
+}
+.save-data-button {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.data-change {
+  float: right;
+  margin-right: 0;
+}
+.edit-data {
+    float: right;
+}
+
+.edit-buttons {
+    text-align: center;
+    clear: both;
+    width: 100%;
+}
+.edit-buttons button{
+    width: 30%;
+    margin: 4px 1%;
+}
+.data-input {
+    text-align: center;
+}
+.stringcpy {
+    text-align: center;
+}
+.stringcpy input {
+    width: 95%;
+    margin-bottom: 5px;
+}
+.stringenter {
+    text-align: center;
+}
+.stringenter input {
+    width: 95%;
+}
+.stringenter button {
+    float: right;
+}
+

@@ -1,10 +1,16 @@
-<div class="schafskopfen">
-
-  <button *ngFor="let button of buttons">{{button}}</button>
-
-  <input [(ngModel)]="player">
-  <button (click)="newButton()">+</button>
-  <button (click)="deleteButton()">-</button>
-
-
-</div>
+<!--div class="topnav" id="myTopnav">
+  <a [routerLink]="['/home']"><i class="material-icons">home</i></a>
+  <a *ngFor="let table of tables | async" [routerLink]="['/table', table.name]">{{table.name}}</a>
+</div-->
+<ul *ngIf="menuOpen == true" class="mobile-nav">
+  <li class="burger"><a><i (click)="toggleMenu()" class="material-icons">keyboard_arrow_up</i></a></li>
+  <li (click)="setActive(homeRoute)" [class.active]="homeRoute == activeRoute"><a [routerLink]="['/home']">{{homeRoute}}</a></li>
+  <li (click)="setActive(table.name)" [class.active]="table.name == activeRoute" *ngFor="let table of tables | async" [routerLink]="['/table', table.name]"><a>{{table.name}}</a></li>
+</ul>
+<ul *ngIf="menuOpen == false" class="mobile-nav">
+  <li class="burger"><a><span>{{activeRoute}}</span><i (click)="toggleMenu()" class="material-icons">keyboard_arrow_down</i></a></li>
+</ul>
+<ul class="desktop-nav">
+  <li (click)="setActive(homeRoute)" [class.active]="homeRoute == activeRoute"><a [routerLink]="['/home']"><i class="material-icons">home</i></a></li>
+  <li (click)="setActive(table.name)" [class.active]="table.name == activeRoute" *ngFor="let table of tables | async" [routerLink]="['/table', table.name]"><a>{{table.name}}</a></li>
+</ul>

@@ -1,5 +1,8 @@
-<span class="gameCounter">{{gameCounter}}. Runde, Pfilcht-Ramsch/Herz-Solo in {{11-(gameCounter%11)}} Runden.</span>
-<button class="newEntry" *ngIf="newGame == false && ramschTime == false && heartSoloTime == false && specialTime == false" (click)="newEntry()">Neuer Eintrag</button>
+<p class="gameCounter">{{table.count}}. Runde</p>
+<p class="gameCounter">Special-Game in {{11-(table.count%11)}} Runden.</p>
+<div class="add-game">
+  <button class="newEntry" *ngIf="newGame == false && ramschTime == false && heartSoloTime == false && specialTime == false" (click)="newEntry()"><i class="material-icons">playlist_add</i></button>
+</div>
 <div *ngIf="newGame == true && ramschTime == true && heartSoloTime == false && specialTime == true" class="specialGame">
   <h1>Pflicht-Ramsch!!!</h1>
   <button (click)="startRamsch()">Go!</button>
@@ -11,14 +14,16 @@
 
 
 
-<div class="newgame" *ngIf="newGame == true && specialTime == false">
+<div class="newgame" *ngIf="newGame == true && specialTime == false && table != undefined">
   <div>
     <p>Spieltyp wählen:</p>
     <button *ngFor="let gametype of gameTypes" (click)="setGameType(gametype)" [class.active]="gametype === selectedGameType" class="btn-grp">{{gametype}}</button>
   </div>
   <div *ngIf="playerCount != 0 && selectedGameType != 'Ramsch'">
     <p>Spieler:</p>
-    <button *ngFor="let player of players" (click)="setPlayer(player.name)" [class.active]="player.name === selectedPlayer[0] || player.name === selectedPlayer[1]" class="btn-grp">{{player.name}}</button>
+    <button *ngFor="let player of table.data" (click)="setPlayer(player.name)" [class.active]="player.name === selectedPlayer[0] || player.name === selectedPlayer[1]" class="btn-grp">
+      {{player.name}}
+    </button>
   </div>
   <div *ngIf="playerCount == playerSelected && playerCount != 0">
     <p>Spieler gewonnen?</p>
@@ -48,11 +53,11 @@
   </div>
   <div *ngIf="selectedGameType == 'Ramsch'">
     <p>Gewinner:</p>
-    <button *ngFor="let player of players" (click)="setRamschWinner(player.name)" [class.active]="player.name === ramschWinner" class="btn-grp">{{player.name}}</button>
+    <button *ngFor="let player of table.data" (click)="setRamschWinner(player.name)" [class.active]="player.name === ramschWinner" class="btn-grp">{{player.name}}</button>
   </div>
   <div *ngIf="ramschWinner != ''">
     <p>Verlierer:</p>
-    <button *ngFor="let player of players" (click)="setRamschLooser(player.name)" [class.active]="player.name === ramschLooser" class="btn-grp">{{player.name}}</button>
+    <button *ngFor="let player of table.data" (click)="setRamschLooser(player.name)" [class.active]="player.name === ramschLooser" class="btn-grp">{{player.name}}</button>
   </div>
   <button *ngIf="contra != 0 || ramschLooser != 0" (click)="calc()">Fertig</button>
 </div>

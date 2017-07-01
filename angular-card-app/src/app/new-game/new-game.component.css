@@ -6,10 +6,7 @@
     margin-top: 5px;
     font-weight: bold;
 }
-.newEntry {
-    float: right;
-    margin-right: 0;
-}
+
 button.active {
     background-color: #fb8c00;
 }
@@ -21,8 +18,16 @@ p {
   text-align: center;
 }
 .gameCounter {
-  color: red;
+    font-weight: bold;
+    color: #2280c6;
+    margin: 8px 0;
 }
 .specialGame {
     text-align: center;
+}
+.add-game {
+  text-align: center;
+}
+.add-game button i {
+  padding-top: 5px;
 }

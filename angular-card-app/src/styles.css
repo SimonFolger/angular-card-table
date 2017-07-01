@@ -1,9 +1,9 @@
 body {
-  padding: 2%;
   margin: 0;
   background-image: url(assets/asfalt-dark.png);
   font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
 }
+
 button {
   font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
   background-color: #2280c6;
@@ -21,4 +21,30 @@ button {
 
 button:hover {
   background-color: #53a6dc;
+}
+
+.input {
+  float: left;
+  width:80%
+}
+
+.input label,input {
+  display: block;
+  width: 95%;
+}
+
+.input input {
+  border: none;
+  border-bottom: 2px solid #2280c6;
+  background: inherit;
+  padding-top: 5px;
+  font-size: 18px;
+}
+
+input:focus {
+  border-bottom: 2px solid #fb8c00;
+}
+
+.icon-button {
+  padding-top: 3px;
 }

@@ -1,0 +1,19 @@
+
+<h2>Tabellen umbennen / löschen</h2>
+<ul>
+  <li *ngFor="let table of tables | async">
+    <div class="input">
+      <label>Name:</label>
+      <input type="text" #updatetext [value]="table.name" />
+    </div>
+    <button (click)="updateTableName(table.$key, updatetext.value)"><i class="material-icons icon-button">done</i></button>
+    <button (click)="deleteTable(table.$key)"><i class="material-icons icon-button">delete_forever</i></button>
+  </li>
+</ul>
+<h2>Tabelle hinzufügen</h2>
+<div class="input">
+  <label>Name der neuen Tabelle:</label>
+  <input type="text" #newitem />
+</div>
+<button (click)="addTable(newitem.value)"><i class="material-icons icon-button">add</i></button>
+
