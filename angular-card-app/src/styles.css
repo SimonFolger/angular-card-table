@@ -25,12 +25,16 @@ button:hover {
 
 .input {
   float: left;
-  width:80%
+  width: 60%
 }
 
 .input label,input {
   display: block;
   width: 95%;
+}
+
+.input label {
+  color: #2280c6;
 }
 
 .input input {
@@ -41,7 +45,7 @@ button:hover {
   font-size: 18px;
 }
 
-input:focus {
+.input input:focus {
   border-bottom: 2px solid #fb8c00;
 }
 

@@ -32,7 +32,7 @@ th {
 }
 .data-change {
   float: right;
-  margin-right: 0;
+  margin: 20px;
 }
 .edit-data {
     float: right;

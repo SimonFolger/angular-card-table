@@ -1,10 +1,10 @@
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 700px) {
   .mobile-nav {
     display: none;
   }
 }
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 699px) {
   .desktop-nav {
     display: none;
   }
@@ -36,18 +36,18 @@ ul {
   overflow: hidden;
   background-color: #2280c6;
 }
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 700px) {
   ul {
     height: 48px;
   }
 }
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 699px) {
   ul {
     text-align: center;
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 700px) {
   li {
     float: left;
   }
@@ -61,9 +61,10 @@ li a {
   text-decoration: none;
   font-size: 19px;
 }
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 699px) {
   li a {
     width: 100%;
+    padding: 14px 0;
   }
 }
 

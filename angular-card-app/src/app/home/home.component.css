@@ -1,3 +1,6 @@
+.home-content {
+  margin: 20px;
+}
 h2 {
   margin-bottom: 10px;
 }
@@ -6,5 +9,5 @@ ul {
 }
 li {
   list-style-type: none;
-  padding: 15px 0;
+  margin-bottom: 10px;
 }

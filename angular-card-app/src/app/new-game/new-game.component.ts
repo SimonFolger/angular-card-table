@@ -60,7 +60,6 @@ export class NewGameComponent implements AfterViewChecked, OnInit {
   }
 
   setPlayer(player: string) {
-    console.log(this.selectedPlayer.length);
     if(this.selectedGameType == "Sauspiel") {
       if (this.selectedPlayer.indexOf(player) == -1 && this.selectedPlayer.length < 2) {
         this.selectedPlayer.push(player);
@@ -84,7 +83,6 @@ export class NewGameComponent implements AfterViewChecked, OnInit {
         }
       }
     }
-    console.log(this.selectedPlayer);
   }
 
   setPlayerWon(number: number) {
